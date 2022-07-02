@@ -162,6 +162,14 @@
 			
 			<el-form-item label="购销货物" v-show="dialogType=='create'" prop="merchandiseName">
 			  <el-input v-model="temp.merchandiseName" placeholder="请输入货物名称" />
+			  <el-button
+			    type="primary"
+			    icon="el-icon-edit"
+			    size="medium"
+			    @click="preciseQuery"
+			  >
+			    查询编号
+			  </el-button>
 			</el-form-item>
 			
 			
@@ -192,7 +200,7 @@
 <script>
 	//需更改
 	// import { queryByCondition } from '@/api/getPurchasesale.js';
-	import { selectAll,selectByName,edit,addByName,deleteById} from '@/api/getPurchasesale.js';
+	import { selectAll,selectByName,edit,addByName,deleteById,preciseQuery} from '@/api/getPurchasesale.js';
 	import { setStorage, getStorage} from "@/utils/localStorage.js";
 	import {deepClone} from "@/utils/index.js";
 	//需更改
@@ -274,6 +282,13 @@
 		},
 
 		methods: {
+			
+			preciseQuery(){
+				
+				preciseQuery(this.temp).then((res)=>{
+					this.temp.merchandiseId=res.datas;
+				})
+			},
 			//返回当前页码
 			handleCurrentChange(val) {
 				//console.log(val);

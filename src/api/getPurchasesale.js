@@ -38,4 +38,15 @@ export function deleteById(data){
 		method: 'post',//请求方式
 		data
 	})
+	
+	
+}
+
+export function preciseQuery(data){
+		return request({
+			url: '/purchasesale/preciseQuery',//请求接口
+			method: 'post',//请求方式
+			data
+		
+		})
 }
